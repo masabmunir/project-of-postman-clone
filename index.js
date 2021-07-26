@@ -86,7 +86,21 @@ let submit = document.getElementById('submit').addEventListener('click', () => {
         // Prism.highlightAll();
       });
   }
+  else{
+    fetch(url, {
+        method: 'POST', 
+        body: data,
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+          }  
+    })
+    .then(response=> response.text())
+    .then((text) =>{
+        // document.getElementById('responseJsonText').value = text;
+        document.getElementById('responsePrism').innerHTML = text;
+        //Prism.highlightAll();
+    });
 
-
+}
 
 })
